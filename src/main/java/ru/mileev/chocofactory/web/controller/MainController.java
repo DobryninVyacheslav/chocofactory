@@ -3,6 +3,7 @@ package ru.mileev.chocofactory.web.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,8 +27,20 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String home(Map<String, Object> model) {
-        model.put("requests", service.readAll());
+    public String home(@RequestParam(required = false) String ingredients,
+                       Model model) {
+
+        List<Request> requestsByIngredients;
+
+        if (ingredients != null && !ingredients.isEmpty()) {
+            requestsByIngredients = service.readAllByIngredients(ingredients);
+        } else {
+            requestsByIngredients = service.readAll();
+        }
+
+        model.addAttribute("requests", requestsByIngredients);
+        model.addAttribute("ingredients", ingredients);
+
         return "main";
     }
 
@@ -37,25 +50,10 @@ public class MainController {
             @RequestParam String ingredients,
             @RequestParam Integer quantity,
             @RequestParam String date,
-            Map<String, Object> model) {
+            Model model) {
         Request request = new Request(null, ingredients, quantity, LocalDate.parse(date), user);
         service.create(request);
-        model.put("requests", service.readAll());
-        return "main";
-    }
-
-    @PostMapping("filter")
-    public String filter(@RequestParam String ingredients, Map<String, Object> model) {
-        List<Request> requests;
-
-        if (ingredients != null && !ingredients.isEmpty()) {
-            requests = service.readAllByIngredients(ingredients);
-        } else {
-            requests = service.readAll();
-        }
-
-        model.put("requests", requests);
-
+        model.addAttribute("requests", service.readAll());
         return "main";
     }
 }
