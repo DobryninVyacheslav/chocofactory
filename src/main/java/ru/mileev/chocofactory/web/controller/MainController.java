@@ -38,7 +38,7 @@ public class MainController {
             @RequestParam Integer quantity,
             @RequestParam String date,
             Map<String, Object> model) {
-        Request request = new Request(null, ingredients, quantity, LocalDate.parse(date));
+        Request request = new Request(null, ingredients, quantity, LocalDate.parse(date), user);
         service.create(request);
         model.put("requests", service.readAll());
         return "main";
