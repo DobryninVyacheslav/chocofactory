@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import ru.mileev.chocofactory.domain.User;
 import ru.mileev.chocofactory.repositories.UserRepository;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
@@ -20,6 +22,10 @@ public class UserService implements UserDetailsService {
 
     public User save(User user) {
         return repository.save(user);
+    }
+
+    public List<User> findAll() {
+        return repository.findAll();
     }
 
     @Override
