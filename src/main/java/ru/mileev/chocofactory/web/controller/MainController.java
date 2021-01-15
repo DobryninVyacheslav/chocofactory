@@ -57,7 +57,7 @@ public class MainController {
     @PostMapping("/main")
     public String create(
             @AuthenticationPrincipal User user,
-            @RequestParam("file") MultipartFile file,
+            @RequestParam(value = "file", required = false) MultipartFile file,
             @RequestParam String ingredients,
             @RequestParam Integer quantity,
             @RequestParam String date,
