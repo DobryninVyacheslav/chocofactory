@@ -8,10 +8,11 @@
     </div>
 
     <div>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <input type="text" name="ingredients" placeholder="Введите сырье"/>
             <input type="number" name="quantity" placeholder="Введите количество">
             <input type="text" name="date" placeholder="Введите дату">
+            <input type="file" name="file">
             <input type="hidden" name="_csrf" value="${_csrf.token}">
             <button type="submit">Добавить</button>
         </form>
@@ -28,6 +29,11 @@
             <i>${request.quantity}</i>
             <span>${request.date}</span>
             <strong>${request.authorName}</strong>
+            <div>
+                <#if request.filename??>
+                    <img src="/img/${request.filename}">
+                </#if>
+            </div>
         </div>
     <#else>
         Нет заявок

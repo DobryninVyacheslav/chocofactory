@@ -26,11 +26,19 @@ public class Request {
     private String ingredients;
     private Integer quantity;
     private LocalDate date;
+    private String filename;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
 
     public String getAuthorName() {
         return author == null ? "<none>" : author.getUsername();
+    }
+
+    public Request(String ingredients, Integer quantity, LocalDate date, User author) {
+        this.ingredients = ingredients;
+        this.quantity = quantity;
+        this.date = date;
+        this.author = author;
     }
 }
