@@ -7,12 +7,13 @@
             <form method="get" action="/main" class="form-inline">
                 <input type="text" name="ingredients" class="form-control" value=""${ingredients!""}
                        placeholder="Искать по ингридиентам"/>
-                <button type="submit" class="btn btn-primary ml-2">Найти</button>
+                <button type="submit" class="btn btn-primary mt-3">Найти</button>
             </form>
         </div>
     </div>
 
-    <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseRequest" role="button" aria-expanded="false"
+    <a class="btn btn-primary mt-3" data-bs-toggle="collapse" href="#collapseRequest" role="button"
+       aria-expanded="false"
        aria-controls="collapseExample">
         Добавить новую заявку
     </a>
@@ -24,7 +25,7 @@
                 <input type="number" class="form-control" name="quantity" placeholder="Введите количество">
                 <input type="text" class="form-control" name="date" placeholder="Введите дату">
                 <div class="mb-3">
-                    <input class="form-control" type="file">
+                    <input class="form-control" type="file" name="file">
                 </div>
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
                 <button type="submit" class="btn btn-primary">Добавить</button>
@@ -34,28 +35,27 @@
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <#list requests as request>
-        <div class="col">
-
-            <#if request.filename??>
-            <div class="card my-3">
-                <img src="/img/${request.filename}" class="card-img-top">
-                </#if>
-                <div class="m-2">
-                    Ингридиент: ${request.ingredients}
-                </div>
-                <div class="m-2">
-                    Количество: ${request.quantity}
-                </div>
-                <div class="m-2">
-                    Дата: ${request.date}
-                </div>
-                <div class="card-footer text-muted">
-                    ${request.authorName}
+            <div class="col">
+                <div class="card my-3">
+                    <#if request.filename??>
+                        <img src="/img/${request.filename}" class="card-img-top">
+                    </#if>
+                    <div class="m-2">
+                        Ингридиент: ${request.ingredients}
+                    </div>
+                    <div class="m-2">
+                        Количество: ${request.quantity}
+                    </div>
+                    <div class="m-2">
+                        Дата: ${request.date}
+                    </div>
+                    <div class="card-footer text-muted">
+                        ${request.authorName}
+                    </div>
                 </div>
             </div>
-            <#else>
-                Нет заявок
-            </#list>
-        </div>
+        <#else>
+            <h6 class="mt-5">Нет заявок</h6>
+        </#list>
     </div>
 </@c.page>
