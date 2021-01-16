@@ -7,6 +7,8 @@ import ru.mileev.chocofactory.repositories.RequestRepository;
 
 import java.util.List;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
+
 @Service
 @RequiredArgsConstructor
 public class RequestService {
@@ -17,11 +19,15 @@ public class RequestService {
         return repository.save(request);
     }
 
-    public List<Request> readAll() {
-        return repository.findAll();
+    public List<Request> findByIngredients(String ingredients) {
+        if (isNullOrEmpty(ingredients)) {
+            return repository.findAll();
+        } else {
+            return repository.findAllByIngredients(ingredients);
+        }
     }
 
-    public List<Request> readAllByIngredients(String ingredients) {
-        return repository.findAllByIngredients(ingredients);
+    public List<Request> readAll() {
+        return repository.findAll();
     }
 }
