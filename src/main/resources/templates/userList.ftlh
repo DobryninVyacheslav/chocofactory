@@ -1,12 +1,12 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-    List of users
+    <h5 class="mb-4">Пользователи</h5>
 
-    <table>
+    <table class="table">
         <thead>
-        <th>Name</th>
-        <th>Role</th>
+        <th>Имя пользователя</th>
+        <th>Роль</th>
         <th></th>
         </thead>
         <tbody>
@@ -16,7 +16,7 @@
                 <td>
                     <#list user.roles as role>${role}<#sep>, </#list>
                 </td>
-                <td><a href="/user/${user.id}">edit</a></td>
+                <td><a href="/user/${user.id}">Редактировать</a></td>
             </tr>
         </#list>
         </tbody>

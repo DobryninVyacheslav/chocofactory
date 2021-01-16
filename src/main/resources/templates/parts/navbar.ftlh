@@ -22,6 +22,10 @@
                     <a class="nav-link" href="/report">Отчет</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="/barch">Партия</a>
+                </li>
+
                 <#if isAdmin>
                     <li class="nav-item">
                         <a class="nav-link" href="/user">Список пользователей</a>
