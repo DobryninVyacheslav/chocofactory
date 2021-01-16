@@ -15,7 +15,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/request">Заявки</a>
+                    <a class="nav-link" href="/request">Заявка</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/report">Отчет</a>
                 </li>
 
                 <#if isAdmin>
