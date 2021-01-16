@@ -48,7 +48,7 @@ public class RequestController {
         model.addAttribute("requests", requestsByIngredients);
         model.addAttribute("ingredients", ingredients);
 
-        return "main";
+        return "request";
     }
 
     @SneakyThrows
@@ -79,6 +79,6 @@ public class RequestController {
 
         service.create(request);
         model.addAttribute("requests", service.readAll());
-        return "main";
+        return "request";
     }
 }
