@@ -173,8 +173,13 @@
 
             <div class="col-12">
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
-                <button class="btn btn-primary mb-5" type="submit">Сохранить</button>
+                <button class="btn btn-primary" type="submit">Сохранить</button>
             </div>
         </form>
     </#if>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-success mt-5 mb-5" href="">Оформить доставку</a>
+    </div>
+
 </@c.page>
