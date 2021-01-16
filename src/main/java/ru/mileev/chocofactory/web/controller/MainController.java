@@ -21,6 +21,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -64,7 +66,7 @@ public class MainController {
             Model model) {
         Request request = new Request(ingredients, quantity, LocalDate.parse(date), user);
 
-        if (file != null && !file.getOriginalFilename().isEmpty()) {
+        if (file != null && !isNullOrEmpty(file.getOriginalFilename())) {
             File uploadDir = new File(uploadPath);
 
             if (!uploadDir.exists()) {
