@@ -173,7 +173,7 @@
 
             <div class="col-12">
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
-                <button class="btn btn-primary" type="submit">Сохранить</button>
+                <button class="btn btn-primary mb-5" type="submit">Сохранить</button>
             </div>
         </form>
     </#if>
