@@ -22,10 +22,10 @@
         <div class="form-group mt-3">
             <form method="post" enctype="multipart/form-data">
                 <input type="text" class="form-control" name="ingredients" placeholder="Введите сырье">
-                <input type="number" class="form-control" name="quantity" placeholder="Введите количество">
-                <input type="date" class="form-control" name="date" placeholder="Введите дату">
+                <input type="number" class="form-control mt-2" name="quantity" placeholder="Введите количество">
+                <input type="date" class="form-control mt-2" name="date" placeholder="Введите дату">
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
-                <button type="submit" class="btn btn-primary">Заказать</button>
+                <button type="submit" class="btn btn-primary mt-3">Заказать</button>
             </form>
         </div>
     </div>

@@ -12,8 +12,8 @@
         <div class="form-group mt-3">
             <form method="post" enctype="multipart/form-data">
                 <input type="date" class="form-control" name="startOfPeriod" placeholder="Начало периода">
-                <input type="date" class="form-control" name="endOfPeriod" placeholder="Конец периода">
-                <div class="mb-3">
+                <input type="date" class="form-control mt-2" name="endOfPeriod" placeholder="Конец периода">
+                <div class="mb-3 mt-2">
                     <input class="form-control" type="file" name="file">
                 </div>
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
