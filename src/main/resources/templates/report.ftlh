@@ -11,8 +11,8 @@
     <div class="collapse" id="collapseReport">
         <div class="form-group mt-3">
             <form method="post" enctype="multipart/form-data">
-                <input type="text" class="form-control" name="startOfPeriod" placeholder="Начало периода">
-                <input type="text" class="form-control" name="endOfPeriod" placeholder="Конец периода">
+                <input type="date" class="form-control" name="startOfPeriod" placeholder="Начало периода">
+                <input type="date" class="form-control" name="endOfPeriod" placeholder="Конец периода">
                 <div class="mb-3">
                     <input class="form-control" type="file" name="file">
                 </div>

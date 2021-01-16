@@ -23,7 +23,7 @@
             <form method="post" enctype="multipart/form-data">
                 <input type="text" class="form-control" name="ingredients" placeholder="Введите сырье">
                 <input type="number" class="form-control" name="quantity" placeholder="Введите количество">
-                <input type="text" class="form-control" name="date" placeholder="Введите дату">
+                <input type="date" class="form-control" name="date" placeholder="Введите дату">
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
                 <button type="submit" class="btn btn-primary">Заказать</button>
             </form>
