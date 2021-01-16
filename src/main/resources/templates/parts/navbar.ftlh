@@ -15,7 +15,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/main">Заявки</a>
+                    <a class="nav-link" href="/request">Заявки</a>
                 </li>
 
                 <#if isAdmin>

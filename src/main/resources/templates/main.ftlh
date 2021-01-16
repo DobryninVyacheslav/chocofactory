@@ -4,7 +4,7 @@
 
     <div class="form-row">
         <div class="form-group col-md-4">
-            <form method="get" action="/main" class="form-inline">
+            <form method="get" action="/request" class="form-inline">
                 <input type="text" name="ingredients" class="form-control" value=""${ingredients!""}
                        placeholder="Искать по ингридиентам"/>
                 <button type="submit" class="btn btn-primary mt-3">Найти</button>
