@@ -160,4 +160,40 @@ public class BatchController {
 
         return "batch";
     }
+
+    @PostMapping("/save-nuts/{id}")
+    public String updateBatchWithNuts(@PathVariable Long id,
+                                      Double nutsWeight,
+                                      String nutsGrindingType,
+                                      Model model) {
+
+        Batch batch = service.findById(id);
+        batch.setNutsWeight(nutsWeight);
+        batch.setNutsGrindingType(nutsGrindingType);
+
+        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
+
+        model.addAttribute("batches", batches);
+        model.addAttribute("batch", batch);
+
+        return "batch";
+    }
+
+    @PostMapping("/save-nuts")
+    public String createBatchWithNuts(Double nutsWeight,
+                                      String nutsGrindingType,
+                                      Model model) {
+
+
+        Batch batch = service.save(Batch.builder()
+                .nutsWeight(nutsWeight)
+                .nutsGrindingType(nutsGrindingType)
+                .build());
+        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
+
+        model.addAttribute("batch", batch);
+        model.addAttribute("batches", batches);
+
+        return "batch";
+    }
 }

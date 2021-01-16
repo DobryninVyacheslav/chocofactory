@@ -59,6 +59,10 @@ public class User implements UserDetails {
         return roles.contains(Role.ИССЛЕДОВАТЕЛЬ);
     }
 
+    public boolean isSquirrel() {
+        return roles.contains(Role.БЕЛКА);
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();

@@ -121,7 +121,31 @@
                 <label for="validationDefault03" class="form-label">Вес наполнителя</label>
                 <input type="number" step="any" class="form-control" id="validationDefault03"
                        name="fillerWeight"
-                       value="${batch.fillerWeight!""}" required>
+                       value="${batch.fillerWeight!"0"}" required>
+            </div>
+            <div class="col-12">
+                <input type="hidden" name="_csrf" value="${_csrf.token}">
+                <button class="btn btn-primary" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </#if>
+
+    <#if isSquirrel || isAdmin>
+        <form class="row g-3 mt-2" action="/batch/save-nuts/${batch.id!""}" method="post">
+
+            <h5>Порция орехов</h5>
+
+            <div class="col-md-6">
+                <label for="validationDefault01" class="form-label">Вес орехов</label>
+                <input type="number" step="any" class="form-control" id="validationDefault01"
+                       name="nutsWeight"
+                       value="${batch.nutsWeight!"0"}" required>
+            </div>
+            <div class="col-md-6">
+                <label for="validationDefault02" class="form-label">Тип помола</label>
+                <input type="text" class="form-control" id="validationDefault02"
+                       name="nutsGrindingType"
+                       value="${batch.nutsGrindingType!""}" required>
             </div>
             <div class="col-12">
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
