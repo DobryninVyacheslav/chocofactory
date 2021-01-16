@@ -28,7 +28,7 @@
                     <input class="form-control" type="file" name="file">
                 </div>
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
-                <button type="submit" class="btn btn-primary">Добавить</button>
+                <button type="submit" class="btn btn-primary">Заказать</button>
             </form>
         </div>
     </div>
