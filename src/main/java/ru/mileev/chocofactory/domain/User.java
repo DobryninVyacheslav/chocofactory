@@ -47,6 +47,14 @@ public class User implements UserDetails {
         return roles.contains(Role.ADMIN);
     }
 
+    public boolean isTechnologist() {
+        return roles.contains(Role.ТЕХНОЛОГ);
+    }
+
+    public boolean isBeater() {
+        return roles.contains(Role.ВЗБИВАТЕЛЬ);
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();

@@ -1,4 +1,5 @@
 <#import "parts/common.ftlh" as c>
+<#include "parts/security.ftlh">
 
 <@c.page>
 
@@ -45,28 +46,57 @@
         </table>
     </div>
 
-    <form class="row g-3" action="/batch/save/${batch.id!""}" method="post">
+    <#if isTechnologist || isAdmin>
+        <form class="row g-3" action="/batch/save-chocolate/${batch.id!""}" method="post">
 
-        <h5>Подготовка шоколада</h5>
+            <h5>Подготовка шоколада</h5>
 
-        <div class="col-md-4">
-            <label for="validationDefault01" class="form-label">Температура</label>
-            <input type="number" step="any" class="form-control" id="validationDefault01" name="chocolateTemperature"
-                   value="${batch.chocolateTemperature!"0"}" required>
-        </div>
-        <div class="col-md-4">
-            <label for="validationDefault02" class="form-label">Скорость перемешивания</label>
-            <input type="number" step="any" class="form-control" id="validationDefault02" name="chocolateStirringSpeed"
-                   value="${batch.chocolateStirringSpeed!"0"}" required>
-        </div>
-        <div class="col-md-4">
-            <label for="validationDefault03" class="form-label">Размер порции</label>
-            <input type="number" step="any" class="form-control" id="validationDefault03" name="chocolateServingSize"
-                   value="${batch.chocolateServingSize!"0"}" required>
-        </div>
-        <div class="col-12">
-            <input type="hidden" name="_csrf" value="${_csrf.token}">
-            <button class="btn btn-primary" type="submit">Сохранить</button>
-        </div>
-    </form>
+            <div class="col-md-4">
+                <label for="validationDefault01" class="form-label">Температура</label>
+                <input type="number" step="any" class="form-control" id="validationDefault01"
+                       name="chocolateTemperature"
+                       value="${batch.chocolateTemperature!"0"}" required>
+            </div>
+            <div class="col-md-4">
+                <label for="validationDefault02" class="form-label">Скорость перемешивания</label>
+                <input type="number" step="any" class="form-control" id="validationDefault02"
+                       name="chocolateStirringSpeed"
+                       value="${batch.chocolateStirringSpeed!"0"}" required>
+            </div>
+            <div class="col-md-4">
+                <label for="validationDefault03" class="form-label">Размер порции</label>
+                <input type="number" step="any" class="form-control" id="validationDefault03"
+                       name="chocolateServingSize"
+                       value="${batch.chocolateServingSize!"0"}" required>
+            </div>
+            <div class="col-12">
+                <input type="hidden" name="_csrf" value="${_csrf.token}">
+                <button class="btn btn-primary" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </#if>
+
+    <#if isBeater || isAdmin>
+        <form class="row g-3 mt-2" action="/batch/save-cream/${batch.id!""}" method="post">
+
+            <h5>Взбивание сливок</h5>
+
+            <div class="col-md-6">
+                <label for="validationDefault01" class="form-label">Время взбивания</label>
+                <input type="number" step="any" class="form-control" id="validationDefault01"
+                       name="creamWhippingTime"
+                       value="${batch.creamWhippingTime!"0"}" required>
+            </div>
+            <div class="col-md-6">
+                <label for="validationDefault02" class="form-label">Скорость взбивания</label>
+                <input type="number" step="any" class="form-control" id="validationDefault02"
+                       name="creamWhippingSpeed"
+                       value="${batch.creamWhippingSpeed!"0"}" required>
+            </div>
+            <div class="col-12">
+                <input type="hidden" name="_csrf" value="${_csrf.token}">
+                <button class="btn btn-primary" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </#if>
 </@c.page>

@@ -23,8 +23,9 @@ public class BatchController {
     public String getPage(Model model) {
 
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
-        model.addAttribute("batches", batches);
+
         model.addAttribute("batch", new Batch());
+        model.addAttribute("batches", batches);
 
         return "batch";
     }
@@ -33,16 +34,17 @@ public class BatchController {
     public String getBatch(@PathVariable Long id,
                            Model model) {
 
-        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
-        model.addAttribute("batches", batches);
         Batch batch = service.findById(id);
+        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
+
         model.addAttribute("batch", batch);
+        model.addAttribute("batches", batches);
 
         return "batch";
     }
 
-    @PostMapping("/save/{id}")
-    public String updateBatch(@PathVariable Long id,
+    @PostMapping("/save-chocolate/{id}")
+    public String updateBatchWithChocolate(@PathVariable Long id,
                               Double chocolateTemperature,
                               Double chocolateStirringSpeed,
                               Double chocolateServingSize,
@@ -61,8 +63,8 @@ public class BatchController {
         return "batch";
     }
 
-    @PostMapping("/save")
-    public String createBatch(
+    @PostMapping("/save-chocolate")
+    public String createBatchWithChocolate(
             Double chocolateTemperature,
             Double chocolateStirringSpeed,
             Double chocolateServingSize,
@@ -74,8 +76,46 @@ public class BatchController {
                 .chocolateStirringSpeed(chocolateStirringSpeed)
                 .chocolateServingSize(chocolateServingSize)
                 .build());
-        model.addAttribute("batch", batch);
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
+
+        model.addAttribute("batch", batch);
+        model.addAttribute("batches", batches);
+
+        return "batch";
+    }
+
+    @PostMapping("/save-cream/{id}")
+    public String updateBatchWithCream(@PathVariable Long id,
+                              Double creamWhippingTime,
+                              Double creamWhippingSpeed,
+                              Model model) {
+
+        Batch batch = service.findById(id);
+        batch.setCreamWhippingTime(creamWhippingTime);
+        batch.setCreamWhippingSpeed(creamWhippingSpeed);
+
+        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
+
+        model.addAttribute("batches", batches);
+        model.addAttribute("batch", batch);
+
+        return "batch";
+    }
+
+    @PostMapping("/save-cream")
+    public String createBatchWithCream(
+            Double creamWhippingTime,
+            Double creamWhippingSpeed,
+            Model model) {
+
+
+        Batch batch = service.save(Batch.builder()
+                .creamWhippingTime(creamWhippingTime)
+                .creamWhippingSpeed(creamWhippingSpeed)
+                .build());
+        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
+
+        model.addAttribute("batch", batch);
         model.addAttribute("batches", batches);
 
         return "batch";
