@@ -45,10 +45,10 @@ public class BatchController {
 
     @PostMapping("/save-chocolate/{id}")
     public String updateBatchWithChocolate(@PathVariable Long id,
-                              Double chocolateTemperature,
-                              Double chocolateStirringSpeed,
-                              Double chocolateServingSize,
-                              Model model) {
+                                           Double chocolateTemperature,
+                                           Double chocolateStirringSpeed,
+                                           Double chocolateServingSize,
+                                           Model model) {
 
         Batch batch = service.findById(id);
         batch.setChocolateTemperature(chocolateTemperature);
@@ -86,9 +86,9 @@ public class BatchController {
 
     @PostMapping("/save-cream/{id}")
     public String updateBatchWithCream(@PathVariable Long id,
-                              Double creamWhippingTime,
-                              Double creamWhippingSpeed,
-                              Model model) {
+                                       Double creamWhippingTime,
+                                       Double creamWhippingSpeed,
+                                       Model model) {
 
         Batch batch = service.findById(id);
         batch.setCreamWhippingTime(creamWhippingTime);
@@ -112,6 +112,46 @@ public class BatchController {
         Batch batch = service.save(Batch.builder()
                 .creamWhippingTime(creamWhippingTime)
                 .creamWhippingSpeed(creamWhippingSpeed)
+                .build());
+        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
+
+        model.addAttribute("batch", batch);
+        model.addAttribute("batches", batches);
+
+        return "batch";
+    }
+
+    @PostMapping("/save-filler/{id}")
+    public String updateBatchWithFiller(@PathVariable Long id,
+                                        String fillerType,
+                                        String fillerConsistency,
+                                        Double fillerWeight,
+                                        Model model) {
+
+        Batch batch = service.findById(id);
+        batch.setFillerType(fillerType);
+        batch.setFillerConsistency(fillerConsistency);
+        batch.setFillerWeight(fillerWeight);
+
+        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
+
+        model.addAttribute("batches", batches);
+        model.addAttribute("batch", batch);
+
+        return "batch";
+    }
+
+    @PostMapping("/save-filler")
+    public String createBatchWithFiller(String fillerType,
+                                        String fillerConsistency,
+                                        Double fillerWeight,
+                                        Model model) {
+
+
+        Batch batch = service.save(Batch.builder()
+                .fillerType(fillerType)
+                .fillerConsistency(fillerConsistency)
+                .fillerWeight(fillerWeight)
                 .build());
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 

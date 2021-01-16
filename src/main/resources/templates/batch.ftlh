@@ -99,4 +99,34 @@
             </div>
         </form>
     </#if>
+
+    <#if isResearcher || isAdmin>
+        <form class="row g-3 mt-2" action="/batch/save-filler/${batch.id!""}" method="post">
+
+            <h5>Задать наполнитель</h5>
+
+            <div class="col-md-4">
+                <label for="validationDefault01" class="form-label">Тип наполнителя</label>
+                <input type="text" class="form-control" id="validationDefault01"
+                       name="fillerType"
+                       value="${batch.fillerType!""}" required>
+            </div>
+            <div class="col-md-4">
+                <label for="validationDefault02" class="form-label">Консистенция наполнителя</label>
+                <input type="text" class="form-control" id="validationDefault02"
+                       name="fillerConsistency"
+                       value="${batch.fillerConsistency!""}" required>
+            </div>
+            <div class="col-md-4">
+                <label for="validationDefault03" class="form-label">Вес наполнителя</label>
+                <input type="number" step="any" class="form-control" id="validationDefault03"
+                       name="fillerWeight"
+                       value="${batch.fillerWeight!""}" required>
+            </div>
+            <div class="col-12">
+                <input type="hidden" name="_csrf" value="${_csrf.token}">
+                <button class="btn btn-primary" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </#if>
 </@c.page>
