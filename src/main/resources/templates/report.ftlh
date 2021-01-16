@@ -2,13 +2,13 @@
 
 <@c.page>
 
-    <a class="btn btn-primary mt-3" data-bs-toggle="collapse" href="#collapseRequest" role="button"
+    <a class="btn btn-primary mt-3" data-bs-toggle="collapse" href="#collapseReport" role="button"
        aria-expanded="false"
        aria-controls="collapseExample">
         Добавить новый отчёт
     </a>
 
-    <div class="collapse" id="collapseRequest">
+    <div class="collapse" id="collapseReport">
         <div class="form-group mt-3">
             <form method="post" enctype="multipart/form-data">
                 <input type="text" class="form-control" name="startOfPeriod" placeholder="Начало периода">
