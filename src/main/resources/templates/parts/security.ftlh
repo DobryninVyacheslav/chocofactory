@@ -11,6 +11,7 @@ known = Session.SPRING_SECURITY_CONTEXT??
     isBeater = user.isBeater()
     isResearcher = user.isResearcher()
     isSquirrel = user.isSquirrel()
+    isPacker = user.isPacker()
     >
 <#else>
 
@@ -21,6 +22,7 @@ known = Session.SPRING_SECURITY_CONTEXT??
     isBeater = false
     isResearcher = false
     isSquirrel = false
+    isPacker = false
     >
 
 </#if>

@@ -153,4 +153,23 @@
             </div>
         </form>
     </#if>
+
+    <#if isPacker || isAdmin>
+        <form class="row g-3 mt-2" action="/batch/save-packaging/${batch.id!""}" method="post">
+
+            <h5>Упаковка партии</h5>
+
+            <div class="col-md-12">
+                <label for="validationDefault01" class="form-label">Тип упаковки</label>
+                <input type="text" class="form-control" id="validationDefault01"
+                       name="packagingType"
+                       value="${batch.packagingType!""}" required>
+            </div>
+
+            <div class="col-12">
+                <input type="hidden" name="_csrf" value="${_csrf.token}">
+                <button class="btn btn-primary" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </#if>
 </@c.page>

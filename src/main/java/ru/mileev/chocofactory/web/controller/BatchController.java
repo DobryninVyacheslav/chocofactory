@@ -196,4 +196,36 @@ public class BatchController {
 
         return "batch";
     }
+
+    @PostMapping("/save-packaging/{id}")
+    public String updateBatchWithPackaging(@PathVariable Long id,
+                                           String packagingType,
+                                           Model model) {
+
+        Batch batch = service.findById(id);
+        batch.setPackagingType(packagingType);
+
+        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
+
+        model.addAttribute("batches", batches);
+        model.addAttribute("batch", batch);
+
+        return "batch";
+    }
+
+    @PostMapping("/save-packaging")
+    public String createBatchWithPackaging(String packagingType,
+                                           Model model) {
+
+
+        Batch batch = service.save(Batch.builder()
+                .packagingType(packagingType)
+                .build());
+        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
+
+        model.addAttribute("batch", batch);
+        model.addAttribute("batches", batches);
+
+        return "batch";
+    }
 }

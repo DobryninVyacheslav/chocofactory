@@ -63,6 +63,10 @@ public class User implements UserDetails {
         return roles.contains(Role.БЕЛКА);
     }
 
+    public boolean isPacker() {
+        return roles.contains(Role.УПАКОВЩИК);
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();
