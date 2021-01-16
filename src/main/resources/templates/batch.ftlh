@@ -3,7 +3,7 @@
 
 <@c.page>
 
-    <form action="/batch/create" method="post">
+    <form action="/batch/create " method="post">
         <a class="btn btn-primary mt-3 mb-3" data-bs-toggle="collapse" href="#collapseBatch" role="button"
            aria-expanded="false"
            aria-controls="collapseExample">
@@ -12,6 +12,8 @@
 
         <input type="hidden" name="_csrf" value="${_csrf.token}">
         <button class="btn btn-primary ms-2" type="submit">Добавить партию</button>
+
+        <a class="btn btn-primary right-element" href="">Оформить доставку</a>
     </form>
 
     <div class="collapse" id="collapseBatch">
