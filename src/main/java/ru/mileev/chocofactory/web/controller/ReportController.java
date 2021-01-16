@@ -34,8 +34,8 @@ public class ReportController {
 
     @GetMapping
     public String get(@RequestParam(required = false) String startOfPeriod,
-                                    @RequestParam(required = false) String endOfPeriod,
-                                    Model model) {
+                      @RequestParam(required = false) String endOfPeriod,
+                      Model model) {
 
         model.addAttribute("reports", service.findAll());
 
