@@ -178,8 +178,10 @@
         </form>
     </#if>
 
+
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-success mt-5 mb-5" href="">Оформить доставку</a>
+        <a class="btn btn-success mt-5 mb-5 <#if !batch.id??>disabled</#if>"
+           href="/delivery/${batch.id!""}">Оформить доставку</a>
     </div>
 
 </@c.page>
