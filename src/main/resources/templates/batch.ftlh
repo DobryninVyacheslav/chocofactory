@@ -12,8 +12,6 @@
 
         <input type="hidden" name="_csrf" value="${_csrf.token}">
         <button class="btn btn-primary ms-2" type="submit">Добавить партию</button>
-
-        <a class="btn btn-primary right-element" href="">Оформить доставку</a>
     </form>
 
     <div class="collapse" id="collapseBatch">
