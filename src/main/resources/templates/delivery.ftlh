@@ -17,7 +17,7 @@
                    name="deliveryAddress" required>
         </div>
         <div class="col-md-4">
-            <label for="validationDefault03" class="form-label">Вес наполнителя</label>
+            <label for="validationDefault03" class="form-label">Дата доставки</label>
             <input type="date" class="form-control" id="validationDefault03"
                    name="deliveryDate" required>
         </div>
