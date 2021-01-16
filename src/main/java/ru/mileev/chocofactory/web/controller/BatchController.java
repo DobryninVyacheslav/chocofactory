@@ -17,6 +17,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BatchController {
 
+    public static final String BATCH = "batch";
+    public static final String BATCHES = "batches";
     private final BatchService service;
 
     @GetMapping
@@ -24,10 +26,10 @@ public class BatchController {
 
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
-        model.addAttribute("batch", new Batch());
-        model.addAttribute("batches", batches);
+        model.addAttribute(BATCH, new Batch());
+        model.addAttribute(BATCHES, batches);
 
-        return "batch";
+        return BATCH;
     }
 
     @GetMapping("/{id}")
@@ -37,10 +39,22 @@ public class BatchController {
         Batch batch = service.findById(id);
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
-        model.addAttribute("batch", batch);
-        model.addAttribute("batches", batches);
+        model.addAttribute(BATCH, batch);
+        model.addAttribute(BATCHES, batches);
 
-        return "batch";
+        return BATCH;
+    }
+
+    @PostMapping("/create")
+    public String createBatch(Model model) {
+
+        Batch batch = service.save(new Batch());
+        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
+
+        model.addAttribute(BATCH, batch);
+        model.addAttribute(BATCHES, batches);
+
+        return BATCH;
     }
 
     @PostMapping("/save-chocolate/{id}")
@@ -54,13 +68,14 @@ public class BatchController {
         batch.setChocolateTemperature(chocolateTemperature);
         batch.setChocolateStirringSpeed(chocolateStirringSpeed);
         batch.setChocolateServingSize(chocolateServingSize);
+        service.save(batch);
 
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
-        model.addAttribute("batches", batches);
-        model.addAttribute("batch", batch);
+        model.addAttribute(BATCH, batch);
+        model.addAttribute(BATCHES, batches);
 
-        return "batch";
+        return BATCH;
     }
 
     @PostMapping("/save-chocolate")
@@ -78,10 +93,10 @@ public class BatchController {
                 .build());
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
-        model.addAttribute("batch", batch);
-        model.addAttribute("batches", batches);
+        model.addAttribute(BATCH, batch);
+        model.addAttribute(BATCHES, batches);
 
-        return "batch";
+        return BATCH;
     }
 
     @PostMapping("/save-cream/{id}")
@@ -93,13 +108,14 @@ public class BatchController {
         Batch batch = service.findById(id);
         batch.setCreamWhippingTime(creamWhippingTime);
         batch.setCreamWhippingSpeed(creamWhippingSpeed);
+        service.save(batch);
 
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
-        model.addAttribute("batches", batches);
-        model.addAttribute("batch", batch);
+        model.addAttribute(BATCH, batch);
+        model.addAttribute(BATCHES, batches);
 
-        return "batch";
+        return BATCH;
     }
 
     @PostMapping("/save-cream")
@@ -115,10 +131,10 @@ public class BatchController {
                 .build());
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
-        model.addAttribute("batch", batch);
-        model.addAttribute("batches", batches);
+        model.addAttribute(BATCH, batch);
+        model.addAttribute(BATCHES, batches);
 
-        return "batch";
+        return BATCH;
     }
 
     @PostMapping("/save-filler/{id}")
@@ -132,13 +148,14 @@ public class BatchController {
         batch.setFillerType(fillerType);
         batch.setFillerConsistency(fillerConsistency);
         batch.setFillerWeight(fillerWeight);
+        service.save(batch);
 
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
-        model.addAttribute("batches", batches);
-        model.addAttribute("batch", batch);
+        model.addAttribute(BATCH, batch);
+        model.addAttribute(BATCHES, batches);
 
-        return "batch";
+        return BATCH;
     }
 
     @PostMapping("/save-filler")
@@ -153,12 +170,13 @@ public class BatchController {
                 .fillerConsistency(fillerConsistency)
                 .fillerWeight(fillerWeight)
                 .build());
+
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
-        model.addAttribute("batch", batch);
-        model.addAttribute("batches", batches);
+        model.addAttribute(BATCH, batch);
+        model.addAttribute(BATCHES, batches);
 
-        return "batch";
+        return BATCH;
     }
 
     @PostMapping("/save-nuts/{id}")
@@ -170,13 +188,14 @@ public class BatchController {
         Batch batch = service.findById(id);
         batch.setNutsWeight(nutsWeight);
         batch.setNutsGrindingType(nutsGrindingType);
+        service.save(batch);
 
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
-        model.addAttribute("batches", batches);
-        model.addAttribute("batch", batch);
+        model.addAttribute(BATCH, batch);
+        model.addAttribute(BATCHES, batches);
 
-        return "batch";
+        return BATCH;
     }
 
     @PostMapping("/save-nuts")
@@ -189,12 +208,13 @@ public class BatchController {
                 .nutsWeight(nutsWeight)
                 .nutsGrindingType(nutsGrindingType)
                 .build());
+
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
-        model.addAttribute("batch", batch);
-        model.addAttribute("batches", batches);
+        model.addAttribute(BATCH, batch);
+        model.addAttribute(BATCHES, batches);
 
-        return "batch";
+        return BATCH;
     }
 
     @PostMapping("/save-packaging/{id}")
@@ -204,13 +224,14 @@ public class BatchController {
 
         Batch batch = service.findById(id);
         batch.setPackagingType(packagingType);
+        service.save(batch);
 
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
-        model.addAttribute("batches", batches);
-        model.addAttribute("batch", batch);
+        model.addAttribute(BATCH, batch);
+        model.addAttribute(BATCHES, batches);
 
-        return "batch";
+        return BATCH;
     }
 
     @PostMapping("/save-packaging")
@@ -221,11 +242,12 @@ public class BatchController {
         Batch batch = service.save(Batch.builder()
                 .packagingType(packagingType)
                 .build());
+
         List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
-        model.addAttribute("batch", batch);
-        model.addAttribute("batches", batches);
+        model.addAttribute(BATCH, batch);
+        model.addAttribute(BATCHES, batches);
 
-        return "batch";
+        return BATCH;
     }
 }
