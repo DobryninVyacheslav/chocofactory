@@ -18,6 +18,21 @@ window.onload = function() {
 
         return false;
     }
+
+    document.getElementById("download").addEventListener("click", () => {
+        let chartContainer = this.document.getElementById("report");
+        console.log(chartContainer);
+        console.log(window);
+        var opt = {
+            margin:       1,
+            filename:     'Отчёт.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        html2pdf().from(chartContainer).set(opt).save();
+    })
 }
 
 function drawChart(days, batches) {
