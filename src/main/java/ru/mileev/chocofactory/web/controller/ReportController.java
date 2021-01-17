@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import ru.mileev.chocofactory.domain.Report;
 import ru.mileev.chocofactory.domain.User;
@@ -52,10 +53,10 @@ public class ReportController {
             @RequestParam String endOfPeriod,
             Model model) {
 
-        Report report = new Report(null, LocalDate.parse(startOfPeriod),
-                LocalDate.parse(endOfPeriod), user, file.getBytes());
+        Report report = new Report(null, isNullOrEmpty(startOfPeriod) ? null : LocalDate.parse(startOfPeriod),
+                isNullOrEmpty(endOfPeriod) ? null : LocalDate.parse(endOfPeriod), user, null);
 
-        if (!isNullOrEmpty(file.getOriginalFilename())) {
+        if (file != null && !isNullOrEmpty(file.getOriginalFilename())) {
             File uploadDir = new File(uploadPath);
 
             if (!uploadDir.exists()) {
@@ -71,5 +72,12 @@ public class ReportController {
         service.create(report);
         model.addAttribute("reports", service.findAll());
         return "report";
+    }
+
+    @GetMapping("/chart-data")
+    @ResponseBody
+    public String getChartData(@RequestParam String startOfPeriod,
+                               @RequestParam String endOfPeriod) {
+        return service.prepareReportData(LocalDate.parse(startOfPeriod), LocalDate.parse(endOfPeriod));
     }
 }

@@ -10,17 +10,16 @@
 
     <div class="collapse" id="collapseReport">
         <div class="form-group mt-3">
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" id="report-period" name="report-period">
                 <input type="date" class="form-control" name="startOfPeriod" placeholder="Начало периода">
                 <input type="date" class="form-control mt-2" name="endOfPeriod" placeholder="Конец периода">
-                <div class="mb-3 mt-2">
-                    <input class="form-control" type="file" name="file">
-                </div>
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
                 <button type="submit" class="btn btn-primary">Сохранить</button>
             </form>
         </div>
     </div>
+
+    <div id="chart-container" style="height: 400px;"></div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <#list reports as report>
@@ -47,4 +46,10 @@
             <h6 class="mt-5">Нет отчётов</h6>
         </#list>
     </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="/static/index.js"></script>
 </@c.page>
