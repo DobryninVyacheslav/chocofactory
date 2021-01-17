@@ -34,14 +34,14 @@ public class DeliveryController {
     public String formBatchDelivery(@PathVariable("batchId") Batch batch,
                                     String order,
                                     String deliveryAddress,
-                                    LocalDate deliveryDate,
+                                    String deliveryDate,
                                     Model model) {
 
         batch.setFormed(true);
         batch.setCreationDate(LocalDate.now());
         batch = batchService.save(batch);
 
-        deliveryService.save(new Delivery(null,order,deliveryAddress,deliveryDate));
+        deliveryService.save(new Delivery(null,order,deliveryAddress,LocalDate.parse(deliveryDate)));
         model.addAttribute("batch", batch);
 
         return "delivery";
