@@ -14,14 +14,18 @@
                 <input type="date" class="form-control" name="startOfPeriod" placeholder="Начало периода">
                 <input type="date" class="form-control mt-2" name="endOfPeriod" placeholder="Конец периода">
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
-                <button type="submit" class="btn btn-primary mt-2">Сгенерировать</button>
+                <button id="generate-button" type="submit" class="btn btn-primary mt-3">Сгенерировать</button>
             </form>
         </div>
     </div>
 
     <div class="mb-5" id="chart-container" style="height: 400px;"></div>
 
+    <table id="batch-table" class="table mt-5"></table>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="/static/chart.js"></script>
+    <script src="/static/table.js"></script>
 </@c.page>
