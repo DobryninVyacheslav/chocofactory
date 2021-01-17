@@ -2,20 +2,18 @@
 
 <@c.page>
 
-    <h5>${username}</h5>
-
-    ${message!""}
+    <h5>Пользователь: ${username}</h5>
 
     <form method="post">
         <div class="form-group row mt-4">
-            <label class="col-sm-2 col-form-label">Email:</label>
+            <label class="col-sm-2 col-form-label">Новый email:</label>
             <div class="col-sm-6">
                 <input type="email" name="email" class="form-control" placeholder="some@some.com"
                        value="${email!""}"/>
             </div>
         </div>
         <div class="form-group row mt-2 mb-2">
-            <label class="col-sm-2 col-form-label">Пароль:</label>
+            <label class="col-sm-2 col-form-label">Новый пароль:</label>
             <div class="col-sm-6">
                 <input type="password" name="password" class="form-control" placeholder="Пароль"/>
             </div>
