@@ -75,10 +75,8 @@ public class BatchController {
 
         notificationService.save(batch, NotificationMessages.CHOCOLATE_PREPARED);
 
-        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
-
         model.addAttribute(BATCH, batch);
-        model.addAttribute(BATCHES, batches);
+        model.addAttribute(BATCHES, service.findAllByFormedNullOrFormedFalse());
 
         return BATCH;
     }
@@ -90,18 +88,16 @@ public class BatchController {
             Double chocolateServingSize,
             Model model) {
 
-
         Batch batch = service.save(Batch.builder()
                 .chocolateTemperature(chocolateTemperature)
                 .chocolateStirringSpeed(chocolateStirringSpeed)
                 .chocolateServingSize(chocolateServingSize)
                 .build());
-        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
         notificationService.save(batch, NotificationMessages.CHOCOLATE_PREPARED);
 
         model.addAttribute(BATCH, batch);
-        model.addAttribute(BATCHES, batches);
+        model.addAttribute(BATCHES, service.findAllByFormedNullOrFormedFalse());
 
         return BATCH;
     }
@@ -117,12 +113,10 @@ public class BatchController {
         batch.setCreamWhippingSpeed(creamWhippingSpeed);
         service.save(batch);
 
-        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
-
         notificationService.save(batch, NotificationMessages.CREAM_WHIPPED);
 
         model.addAttribute(BATCH, batch);
-        model.addAttribute(BATCHES, batches);
+        model.addAttribute(BATCHES, service.findAllByFormedNullOrFormedFalse());
 
         return BATCH;
     }
@@ -133,17 +127,15 @@ public class BatchController {
             Double creamWhippingSpeed,
             Model model) {
 
-
         Batch batch = service.save(Batch.builder()
                 .creamWhippingTime(creamWhippingTime)
                 .creamWhippingSpeed(creamWhippingSpeed)
                 .build());
-        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
 
         notificationService.save(batch, NotificationMessages.CREAM_WHIPPED);
 
         model.addAttribute(BATCH, batch);
-        model.addAttribute(BATCHES, batches);
+        model.addAttribute(BATCHES, service.findAllByFormedNullOrFormedFalse());
 
         return BATCH;
     }
@@ -161,12 +153,10 @@ public class BatchController {
         batch.setFillerWeight(fillerWeight);
         service.save(batch);
 
-        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
-
         notificationService.save(batch, NotificationMessages.FILLER_EXPLORED);
 
         model.addAttribute(BATCH, batch);
-        model.addAttribute(BATCHES, batches);
+        model.addAttribute(BATCHES, service.findAllByFormedNullOrFormedFalse());
 
         return BATCH;
     }
@@ -184,12 +174,10 @@ public class BatchController {
                 .fillerWeight(fillerWeight)
                 .build());
 
-        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
-
         notificationService.save(batch, NotificationMessages.FILLER_EXPLORED);
 
         model.addAttribute(BATCH, batch);
-        model.addAttribute(BATCHES, batches);
+        model.addAttribute(BATCHES, service.findAllByFormedNullOrFormedFalse());
 
         return BATCH;
     }
@@ -205,12 +193,10 @@ public class BatchController {
         batch.setNutsGrindingType(nutsGrindingType);
         service.save(batch);
 
-        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
-
         notificationService.save(batch, NotificationMessages.NUTS_CLEANED);
 
         model.addAttribute(BATCH, batch);
-        model.addAttribute(BATCHES, batches);
+        model.addAttribute(BATCHES, service.findAllByFormedNullOrFormedFalse());
 
         return BATCH;
     }
@@ -226,12 +212,10 @@ public class BatchController {
                 .nutsGrindingType(nutsGrindingType)
                 .build());
 
-        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
-
         notificationService.save(batch, NotificationMessages.NUTS_CLEANED);
 
         model.addAttribute(BATCH, batch);
-        model.addAttribute(BATCHES, batches);
+        model.addAttribute(BATCHES, service.findAllByFormedNullOrFormedFalse());
 
         return BATCH;
     }
@@ -245,12 +229,10 @@ public class BatchController {
         batch.setPackagingType(packagingType);
         service.save(batch);
 
-        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
-
         notificationService.save(batch, NotificationMessages.BATCH_PACKED);
 
         model.addAttribute(BATCH, batch);
-        model.addAttribute(BATCHES, batches);
+        model.addAttribute(BATCHES, service.findAllByFormedNullOrFormedFalse());
 
         return BATCH;
     }
@@ -264,12 +246,10 @@ public class BatchController {
                 .packagingType(packagingType)
                 .build());
 
-        List<Batch> batches = service.findAllByFormedNullOrFormedFalse();
-
         notificationService.save(batch, NotificationMessages.BATCH_PACKED);
 
         model.addAttribute(BATCH, batch);
-        model.addAttribute(BATCHES, batches);
+        model.addAttribute(BATCHES, service.findAllByFormedNullOrFormedFalse());
 
         return BATCH;
     }
