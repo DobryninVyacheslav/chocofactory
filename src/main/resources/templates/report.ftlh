@@ -23,5 +23,5 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="/static/index.js"></script>
+    <script src="/static/chart.js"></script>
 </@c.page>
