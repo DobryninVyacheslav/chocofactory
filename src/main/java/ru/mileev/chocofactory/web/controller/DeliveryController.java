@@ -11,6 +11,7 @@ import ru.mileev.chocofactory.domain.Batch;
 import ru.mileev.chocofactory.domain.Delivery;
 import ru.mileev.chocofactory.services.BatchService;
 import ru.mileev.chocofactory.services.DeliveryService;
+import ru.mileev.chocofactory.services.NotificationService;
 
 import java.time.LocalDate;
 
@@ -21,6 +22,7 @@ public class DeliveryController {
 
     private final BatchService batchService;
     private final DeliveryService deliveryService;
+    private final NotificationService notificationService;
 
     @GetMapping("/{batchId}")
     public String getPage(@PathVariable("batchId") Batch batch, Model model) {
@@ -40,6 +42,8 @@ public class DeliveryController {
         batch.setFormed(true);
         batch.setCreationDate(LocalDate.now());
         batch = batchService.save(batch);
+
+        notificationService.updateAllByBatchId(batch.getId());
 
         deliveryService.save(new Delivery(null,order,deliveryAddress,LocalDate.parse(deliveryDate)));
         model.addAttribute("batch", batch);

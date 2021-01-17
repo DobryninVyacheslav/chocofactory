@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.mileev.chocofactory.domain.Notification;
 import ru.mileev.chocofactory.domain.Role;
 import ru.mileev.chocofactory.domain.User;
+import ru.mileev.chocofactory.services.NotificationService;
 import ru.mileev.chocofactory.services.UserService;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -22,6 +25,8 @@ import java.util.Map;
 public class UserController {
 
     private final UserService service;
+    private final NotificationService notificationService;
+
 
     @GetMapping
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -53,6 +58,12 @@ public class UserController {
     @GetMapping("profile")
     public String getProfile(@AuthenticationPrincipal User user,
                              Model model) {
+
+        List<Notification> notifications = notificationService
+                .findAllByBatchFormedNullOrBatchFormedFalse();
+
+
+        model.addAttribute("notifications", notifications);
         model.addAttribute("username", user.getUsername());
         model.addAttribute("email", user.getEmail());
 
