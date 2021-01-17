@@ -7,7 +7,6 @@ import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 import ru.mileev.chocofactory.domain.Batch;
 import ru.mileev.chocofactory.domain.Report;
-import ru.mileev.chocofactory.repositories.BatchRepository;
 import ru.mileev.chocofactory.repositories.ReportRepository;
 
 import java.time.LocalDate;
@@ -22,7 +21,7 @@ import java.util.stream.Collectors;
 public class ReportService {
 
     private final ReportRepository repository;
-    private final BatchRepository batchRepository;
+    private final BatchService batchService;
 
     public void create(Report report) {
         repository.save(report);
@@ -34,7 +33,7 @@ public class ReportService {
 
     @SneakyThrows
     public String prepareReportData(LocalDate before, LocalDate after) {
-        List<Batch> batches = batchRepository.findAllByCreationDateBetween(before, after);
+        List<Batch> batches = batchService.findAllByCreationDateBetween(before, after);
 
         JsonArray jsonDays = new JsonArray();
         JsonArray jsonBatches = new JsonArray();

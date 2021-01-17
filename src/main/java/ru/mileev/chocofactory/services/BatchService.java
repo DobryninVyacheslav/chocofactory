@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.mileev.chocofactory.domain.Batch;
 import ru.mileev.chocofactory.repositories.BatchRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -23,5 +24,9 @@ public class BatchService {
 
     public Batch save(Batch batch) {
         return repository.save(batch);
+    }
+
+    public List<Batch> findAllByCreationDateBetween(LocalDate before, LocalDate after) {
+        return repository.findAllByCreationDateBetween(before, after);
     }
 }
