@@ -6,8 +6,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 import ru.mileev.chocofactory.domain.Batch;
-import ru.mileev.chocofactory.domain.Report;
-import ru.mileev.chocofactory.repositories.ReportRepository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -20,16 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ReportService {
 
-    private final ReportRepository repository;
     private final BatchService batchService;
-
-    public void create(Report report) {
-        repository.save(report);
-    }
-
-    public List<Report> findAll() {
-        return repository.findAll();
-    }
 
     @SneakyThrows
     public String prepareReportData(LocalDate before, LocalDate after) {
