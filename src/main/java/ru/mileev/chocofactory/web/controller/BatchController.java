@@ -167,7 +167,6 @@ public class BatchController {
                                         Double fillerWeight,
                                         Model model) {
 
-
         Batch batch = service.save(Batch.builder()
                 .fillerType(fillerType)
                 .fillerConsistency(fillerConsistency)
@@ -206,7 +205,6 @@ public class BatchController {
                                       String nutsGrindingType,
                                       Model model) {
 
-
         Batch batch = service.save(Batch.builder()
                 .nutsWeight(nutsWeight)
                 .nutsGrindingType(nutsGrindingType)
@@ -240,7 +238,6 @@ public class BatchController {
     @PostMapping("/save-packaging")
     public String createBatchWithPackaging(String packagingType,
                                            Model model) {
-
 
         Batch batch = service.save(Batch.builder()
                 .packagingType(packagingType)
