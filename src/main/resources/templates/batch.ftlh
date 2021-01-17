@@ -148,9 +148,12 @@
             </div>
             <div class="col-md-6">
                 <label for="validationDefault02" class="form-label">Тип помола</label>
-                <input type="text" class="form-control" id="validationDefault02"
-                       name="nutsGrindingType"
-                       value="${batch.nutsGrindingType!""}" required>
+                <select class="form-select" name="nutsGrindingType" id="validationDefault02">
+                    <option selected>${batch.nutsGrindingType!""}</option>
+                    <option <#if "Очень мелко"?matches(batch.nutsGrindingType!"")>style="display: none"</#if>>Очень мелко</option>
+                    <option <#if "Мелко"?matches(batch.nutsGrindingType!"")>style="display: none"</#if>>Мелко</option>
+                    <option <#if "Крупно"?matches(batch.nutsGrindingType!"")>style="display: none"</#if>>Крупно</option>
+                </select>
             </div>
             <div class="col-12">
                 <input type="hidden" name="_csrf" value="${_csrf.token}">
@@ -166,9 +169,12 @@
 
             <div class="col-md-12">
                 <label for="validationDefault01" class="form-label">Тип упаковки</label>
-                <input type="text" class="form-control" id="validationDefault01"
-                       name="packagingType"
-                       value="${batch.packagingType!""}" required>
+                <select class="form-select" name="packagingType" id="validationDefault01">
+                    <option selected>${batch.packagingType!""}</option>
+                    <option <#if "Картон"?matches(batch.packagingType!"")>style="display: none"</#if>>Картон</option>
+                    <option <#if "Пластик"?matches(batch.packagingType!"")>style="display: none"</#if>>Пластик</option>
+                    <option <#if "Бумага"?matches(batch.packagingType!"")>style="display: none"</#if>>Бумага</option>
+                </select>
             </div>
 
             <div class="col-12">
