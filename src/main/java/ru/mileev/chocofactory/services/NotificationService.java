@@ -2,7 +2,9 @@ package ru.mileev.chocofactory.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.mileev.chocofactory.domain.Batch;
 import ru.mileev.chocofactory.domain.Notification;
+import ru.mileev.chocofactory.domain.NotificationMessages;
 import ru.mileev.chocofactory.repositories.NotificationRepository;
 
 import java.time.LocalDateTime;
@@ -29,8 +31,12 @@ public class NotificationService {
                 });
     }
 
-    public Notification save(Notification notification) {
-        return repository.save(notification);
+    public Notification save(Batch batch, NotificationMessages notificationMessage) {
+        return repository.save(Notification.builder()
+                .batchId(batch.getId())
+                .message(notificationMessage.value())
+                .batchFormed(batch.getFormed())
+                .build());
     }
 
     private List<Notification> formatDateTime(List<Notification> notifications) {
