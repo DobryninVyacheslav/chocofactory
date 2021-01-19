@@ -5,7 +5,7 @@
     <div class="form-row">
         <div class="form-group col-md-4">
             <form method="get" action="/request" class="form-inline">
-                <input type="text" name="ingredients" class="form-control" value=""${ingredients!""}
+                <input type="text" name="ingredientsToSearch" class="form-control" value=""
                        placeholder="Искать по ингридиентам"/>
                 <button type="submit" class="btn btn-primary mt-3">Найти</button>
             </form>
@@ -21,7 +21,7 @@
     <div class="collapse" id="collapseRequest">
         <div class="form-group mt-3">
             <form method="post" enctype="multipart/form-data">
-                <input type="text" class="form-control" name="ingredients" placeholder="Введите сырье">
+                <input type="text" class="form-control" name="inputIngredients" placeholder="Введите сырье">
                 <input type="number" class="form-control mt-2" name="quantity" placeholder="Введите количество">
                 <input type="date" class="form-control mt-2" name="date" placeholder="Введите дату">
                 <input type="hidden" name="_csrf" value="${_csrf.token}">

@@ -1,7 +1,6 @@
 package ru.mileev.chocofactory.web.controller;
 
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -25,25 +24,24 @@ public class RequestController {
     private final RequestService service;
 
     @GetMapping
-    public String findByIngredients(@RequestParam(required = false) String ingredients,
+    public String findByIngredients(@RequestParam(required = false) String ingredientsToSearch,
                                     Model model) {
 
-        model.addAttribute("requests", service.findByIngredients(ingredients));
-        model.addAttribute("ingredients", ingredients);
+        model.addAttribute("requests", service.findByIngredients(ingredientsToSearch));
+        model.addAttribute("ingredients", ingredientsToSearch);
 
         return "request";
     }
 
-    @SneakyThrows
     @PostMapping
     public String create(
             @AuthenticationPrincipal User user,
-            @RequestParam String ingredients,
+            @RequestParam String inputIngredients,
             @RequestParam Integer quantity,
             @RequestParam String date,
             Model model) {
 
-        service.create(new Request(ingredients, quantity, LocalDate.parse(date), user));
+        service.create(new Request(inputIngredients, quantity, LocalDate.parse(date), user));
         model.addAttribute("requests", service.readAll());
 
         return "request";
