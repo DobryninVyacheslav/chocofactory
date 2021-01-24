@@ -14,6 +14,8 @@
     <name>chocofactory</name>
     <description>Chocolate Factory</description>
 
+    <packaging>jar</packaging>
+
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -76,6 +78,7 @@
     </dependencies>
 
     <build>
+        <finalName>chocofactory</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -87,6 +90,7 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <executable>true</executable>
                 </configuration>
             </plugin>
         </plugins>
