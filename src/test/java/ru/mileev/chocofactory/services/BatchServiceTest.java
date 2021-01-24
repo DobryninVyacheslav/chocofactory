@@ -9,6 +9,7 @@ import ru.mileev.chocofactory.domain.Batch;
 import ru.mileev.chocofactory.repositories.BatchRepository;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +29,7 @@ class BatchServiceTest {
     void whenFoundAllBatchesByFormedNullOrFormedFalseThenReturnBatchList() {
         // Arrange
         when(repository.findAllByFormedNullOrFormedFalse())
-                .thenReturn(List.of(Batch.builder().id(1L).build(),
+                .thenReturn(Arrays.asList(Batch.builder().id(1L).build(),
                         Batch.builder().id(2L).build()));
 
         // Act
@@ -84,7 +85,7 @@ class BatchServiceTest {
         LocalDate before = LocalDate.parse("2020-01-15");
         LocalDate after = LocalDate.parse("2020-01-20");
         when(repository.findAllByCreationDateBetween(before, after))
-                .thenReturn(List.of(Batch.builder().id(1L).build(),
+                .thenReturn(Arrays.asList(Batch.builder().id(1L).build(),
                         Batch.builder().id(2L).build()));
 
         // Act
